@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>JWT Decryptor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <style>
+        .navbar {
+            background-color: #000; /* Dark black color */
+        }
+        .footer {
+            padding: 2rem 1.5rem 2rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000; /* Dark black color */
+            color: white;
+        }
+        .footer img {
+            height: 28px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="images/logo.svg" alt="Logo" style="margin-right: 8px;">
+            JWT Decryptor
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="/">
+                Home
+            </a>
+        </div>
+    </div>
+</nav>
+<section class="section">
+    <div class="container">
+        <h1 class="title has-text-centered">JWT Decryptor</h1>
+        <form action="/decrypt" method="post">
+            <div class="field">
+                <label class="label">JWT Token</label>
+                <div class="control">
+                    <textarea class="textarea" name="token" placeholder="Paste your JWT token here" rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Decrypt</button>
+                </div>
+                <div class="control">
+                    <button class="button is-light" type="reset" onclick="window.location.href='/'">Reset</button>
+                </div>
+            </div>
+        </form>
+        <div class="section" th:if="${error != null}">
+            <h2 class="subtitle has-text-danger">Error</h2>
+            <p th:text="${error}"></p>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <p>
+        <img src="images/logo.svg" alt="Logo">
+        &copy; 2024 JWT Decryptor. All rights reserved.
+    </p>
+</footer>
+</body>
+</html>
